@@ -12,6 +12,7 @@ bool isMatching(char a, char b)
   }
   return false;
 }
+
 void printDP(vector<vector<int>> v)
 {
   for (int i = 0; i < v.size(); i++)
@@ -123,46 +124,73 @@ void traceback(int i, int j, string str, vector<vector<int>> dp, vector<pair<int
   }
 }
 
-int main()
+void printPairArray(vector<pair<int, int>> pairs)
 {
-  string s;
-  cout << "Enter RNA sequence: ";
-  cin >> s;
-  if (s[0] >= 'a')
-  {
-    for (int i = 0; i < s.size(); i++)
-    {
-      s[i] = (char)(s[i] - 32);
-    }
-  }
-  vector<vector<int>> dp = optimalMatching(s);
-  vector<pair<int, int>> p;
-  traceback(0, s.size() - 1, s, dp, p);
-  cout << "\nIndex of pairs: ";
-  for (auto i : p)
+  for (auto i : pairs)
   {
     cout << "{" << i.first << "," << i.second << "} ";
   }
-  cout << "\nThe Pairs: ";
-  for (auto i : p)
-  {
-    cout << "{" << s[i.first] << "," << s[i.second] << "} ";
-  }
+}
+
+string oneDViz(string seq, vector<pair<int, int>> pairs)
+{
   string oned_viz = "";
-  for (int i = 0; i < s.size(); i++)
+  for (int i = 0; i < seq.size(); i++)
   {
     oned_viz.push_back('.');
   }
-  for (auto i : p)
+  for (auto i : pairs)
   {
     oned_viz[i.first] = '(';
     oned_viz[i.second] = ')';
   }
+  return oned_viz;
+}
+
+string pythonCSIndex(vector<pair<int, int>> pairs)
+{
+  string ans = "";
+  for (auto i : pairs)
+  {
+    ans += to_string(i.first);
+    ans.push_back(',');
+    ans += to_string(i.second);
+    ans.push_back(',');
+  }
+  ans.pop_back();
+  return ans;
+}
+
+int main()
+{
+  string rna_seq;
+  cout << "Enter RNA sequence: ";
+  cin >> rna_seq;
+  if (rna_seq[0] >= 'a')
+  {
+    for (int i = 0; i < rna_seq.size(); i++)
+    {
+      rna_seq[i] = (char)(rna_seq[i] - 32);
+    }
+  }
+  vector<vector<int>> opt = optimalMatching(rna_seq);
+  vector<pair<int, int>> bonded_pair_index;
+  traceback(0, rna_seq.size() - 1, rna_seq, opt, bonded_pair_index);
+  cout << "\nIndex of pairs: ";
+  printPairArray(bonded_pair_index);
+  cout << "\nThe Pairs: ";
+  for (auto i : bonded_pair_index)
+  {
+    cout << "{" << rna_seq[i.first] << "," << rna_seq[i.second] << "} ";
+  }
+  string oned_viz = oneDViz(rna_seq, bonded_pair_index);
   cout << "\n\n1 Dimensional Visualization:" << endl;
   cout << oned_viz << endl;
   string pythonscript = "./twod_viz.py";
   string cmd = "python " + pythonscript;
   cmd.push_back(' ');
-  cmd += "suman";
+  cmd += rna_seq;
+  cmd.push_back(' ');
+  cmd += pythonCSIndex(bonded_pair_index);
   int res = system(cmd.c_str());
 }
