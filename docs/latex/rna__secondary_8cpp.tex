@@ -1,0 +1,227 @@
+\doxysection{/\+Users/yspsandeep/\+Documents/\+SEM3-\/2/\+DAA/\+RNA\+\_\+secondary\+\_\+structure-\/main/rna\+\_\+secondary.cpp File Reference}
+\hypertarget{rna__secondary_8cpp}{}\label{rna__secondary_8cpp}\index{/Users/yspsandeep/Documents/SEM3-\/2/DAA/RNA\_secondary\_structure-\/main/rna\_secondary.cpp@{/Users/yspsandeep/Documents/SEM3-\/2/DAA/RNA\_secondary\_structure-\/main/rna\_secondary.cpp}}
+
+
+This file contains a C++ program that computes the optimal secondary structure of an RNA sequence using dynamic programming.  
+
+
+{\ttfamily \#include $<$bits/stdc++.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{rna__secondary_8cpp_a3e196459c21b2650c8399294c79b6b0b}{is\+Matching}} (char a, char b)
+\begin{DoxyCompactList}\small\item\em Checks if two characters representing nucleotides are complementary (can form a base pair). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rna__secondary_8cpp_a3109898fb77ffa9235eae3239ffcc980}{print\+DP}} (vector$<$ vector$<$ int $>$ $>$ v)
+\begin{DoxyCompactList}\small\item\em Prints a 2D vector of integers. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ int $>$ $>$ \mbox{\hyperlink{rna__secondary_8cpp_af12dc14487f2265415bd37b2333cddfe}{optimal\+Matching}} (string str)
+\begin{DoxyCompactList}\small\item\em Computes the optimal secondary structure of an RNA sequence using dynamic programming. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rna__secondary_8cpp_a858eec12f2b91a840c7d7d84f059d6ff}{traceback}} (int i, int j, string str, vector$<$ vector$<$ int $>$ $>$ dp, vector$<$ pair$<$ int, int $>$ $>$ \&ans)
+\begin{DoxyCompactList}\small\item\em Performs traceback to reconstruct the optimal secondary structure from the dynamic programming table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rna__secondary_8cpp_a1aa2eae3605c1184ecfa09b65c347b66}{print\+Pair\+Array}} (vector$<$ pair$<$ int, int $>$ $>$ pairs)
+\begin{DoxyCompactList}\small\item\em Prints an array of pairs of integers. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{rna__secondary_8cpp_aef478e5b555140fed8593395e78a0b58}{one\+DViz}} (string seq, vector$<$ pair$<$ int, int $>$ $>$ pairs)
+\begin{DoxyCompactList}\small\item\em Generates a one-\/dimensional visualization of the secondary structure. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{rna__secondary_8cpp_a453e9c967be8b282957ba0a8476a8c3d}{python\+CSIndex}} (vector$<$ pair$<$ int, int $>$ $>$ pairs)
+\begin{DoxyCompactList}\small\item\em Generates a comma-\/separated string of bonded pair indices for use with a Python script. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rna__secondary_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em The main function of the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains a C++ program that computes the optimal secondary structure of an RNA sequence using dynamic programming. 
+
+\begin{DoxyAuthor}{Author}
+Y.\+S Sandeep 
+
+Suman Sekhar Sahoo 
+
+Raghuram Venkatesan 
+
+Bhaarat K 
+
+Kamalesh Ram 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024-\/04-\/28 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{rna__secondary_8cpp_a3e196459c21b2650c8399294c79b6b0b}\label{rna__secondary_8cpp_a3e196459c21b2650c8399294c79b6b0b} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!isMatching@{isMatching}}
+\index{isMatching@{isMatching}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{isMatching()}{isMatching()}}
+{\footnotesize\ttfamily bool is\+Matching (\begin{DoxyParamCaption}\item[{char}]{a,  }\item[{char}]{b }\end{DoxyParamCaption})}
+
+
+
+Checks if two characters representing nucleotides are complementary (can form a base pair). 
+
+This function takes two characters representing nucleotides (A, U, G, or C) and checks if they are complementary and can form a base pair. It does this by checking if the two characters are A and U, or G and C, respectively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The first nucleotide character. \\
+\hline
+{\em b} & The second nucleotide character. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the two nucleotides can form a base pair, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{rna__secondary_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{rna__secondary_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!main@{main}}
+\index{main@{main}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The main function of the program. 
+
+The main function performs the following steps\+:
+\begin{DoxyEnumerate}
+\item Prompts the user to enter an RNA sequence and reads it from the input.
+\item Converts the input sequence to uppercase if it was entered in lowercase.
+\item Calls the optimal\+Matching function to compute the optimal secondary structure of the RNA sequence.
+\item Initializes a vector to store the bonded pairs of indices.
+\item Calls the traceback function to reconstruct the optimal secondary structure and store the bonded pairs in the vector.
+\item Prints the indices of the bonded pairs.
+\item Prints the actual bonded pairs of nucleotides.
+\item Calls the one\+DViz function to generate a one-\/dimensional visualization of the secondary structure and prints it.
+\item Constructs a command to run a Python script for two-\/dimensional visualization of the secondary structure.
+\item Executes the Python script with the RNA sequence and the bonded pair indices as arguments.
+\end{DoxyEnumerate}
+
+\begin{DoxyReturn}{Returns}
+The exit status of the program. 
+\end{DoxyReturn}
+\Hypertarget{rna__secondary_8cpp_aef478e5b555140fed8593395e78a0b58}\label{rna__secondary_8cpp_aef478e5b555140fed8593395e78a0b58} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!oneDViz@{oneDViz}}
+\index{oneDViz@{oneDViz}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{oneDViz()}{oneDViz()}}
+{\footnotesize\ttfamily string one\+DViz (\begin{DoxyParamCaption}\item[{string}]{seq,  }\item[{vector$<$ pair$<$ int, int $>$ $>$}]{pairs }\end{DoxyParamCaption})}
+
+
+
+Generates a one-\/dimensional visualization of the secondary structure. 
+
+This function takes an RNA sequence and an array of bonded pairs of indices, and generates a one-\/dimensional visualization of the secondary structure of the RNA sequence. The visualization is a string where each character represents a nucleotide in the sequence. Unpaired nucleotides are represented by a dot ({\ttfamily .}), while paired nucleotides are represented by an opening parenthesis {\ttfamily (} for the first nucleotide in the pair, and a closing parenthesis {\ttfamily )} for the second nucleotide in the pair.
+
+The function first initializes a string {\ttfamily oned\+\_\+viz} with dots for each nucleotide in the sequence. Then, it iterates over each bonded pair of indices and replaces the corresponding characters in {\ttfamily oned\+\_\+viz} with opening and closing parentheses, respectively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq} & The RNA sequence as a string. \\
+\hline
+{\em pairs} & The array of bonded pairs of indices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The one-\/dimensional visualization string. 
+\end{DoxyReturn}
+\Hypertarget{rna__secondary_8cpp_af12dc14487f2265415bd37b2333cddfe}\label{rna__secondary_8cpp_af12dc14487f2265415bd37b2333cddfe} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!optimalMatching@{optimalMatching}}
+\index{optimalMatching@{optimalMatching}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{optimalMatching()}{optimalMatching()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ int $>$ $>$ optimal\+Matching (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+Computes the optimal secondary structure of an RNA sequence using dynamic programming. 
+
+This function implements the Nussinov algorithm to compute the optimal secondary structure of an RNA sequence using dynamic programming. The algorithm fills a 2D table {\ttfamily opt} where {\ttfamily opt\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}} represents the maximum number of base pairs that can be formed by the substring from index {\ttfamily i} to index {\ttfamily j} in the RNA sequence.
+
+The function first initializes the table for small substrings of length up to 4, where no base pairs can be formed. Then, it iterates over larger substrings and computes the maximum number of base pairs that can be formed by considering all possible pairs of indices {\ttfamily k} and {\ttfamily j} such that the nucleotides at those indices can form a base pair. It updates the {\ttfamily opt} table accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The RNA sequence as a string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The dynamic programming table representing the optimal secondary structure. 
+\end{DoxyReturn}
+\Hypertarget{rna__secondary_8cpp_a3109898fb77ffa9235eae3239ffcc980}\label{rna__secondary_8cpp_a3109898fb77ffa9235eae3239ffcc980} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!printDP@{printDP}}
+\index{printDP@{printDP}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{printDP()}{printDP()}}
+{\footnotesize\ttfamily void print\+DP (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$}]{v }\end{DoxyParamCaption})}
+
+
+
+Prints a 2D vector of integers. 
+
+This function takes a 2D vector of integers and prints its contents to the console. It iterates over each element of the vector and prints it on a new line after each row.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The 2D vector to be printed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{rna__secondary_8cpp_a1aa2eae3605c1184ecfa09b65c347b66}\label{rna__secondary_8cpp_a1aa2eae3605c1184ecfa09b65c347b66} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!printPairArray@{printPairArray}}
+\index{printPairArray@{printPairArray}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{printPairArray()}{printPairArray()}}
+{\footnotesize\ttfamily void print\+Pair\+Array (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, int $>$ $>$}]{pairs }\end{DoxyParamCaption})}
+
+
+
+Prints an array of pairs of integers. 
+
+This function takes an array (vector) of pairs of integers and prints them to the console in the format {\ttfamily \{first,second\}}. It iterates over each pair in the vector and prints the {\ttfamily first} and {\ttfamily second} elements enclosed in curly braces and separated by a comma.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pairs} & The array of pairs to be printed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{rna__secondary_8cpp_a453e9c967be8b282957ba0a8476a8c3d}\label{rna__secondary_8cpp_a453e9c967be8b282957ba0a8476a8c3d} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!pythonCSIndex@{pythonCSIndex}}
+\index{pythonCSIndex@{pythonCSIndex}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{pythonCSIndex()}{pythonCSIndex()}}
+{\footnotesize\ttfamily string python\+CSIndex (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, int $>$ $>$}]{pairs }\end{DoxyParamCaption})}
+
+
+
+Generates a comma-\/separated string of bonded pair indices for use with a Python script. 
+
+This function takes an array of bonded pairs of indices and generates a comma-\/separated string representation of these pairs. The string is formatted in a way that can be used as an argument to a Python script for further processing or visualization.
+
+The function iterates over each pair in the input array and appends the {\ttfamily first} and {\ttfamily second} elements of the pair to the output string, separated by a comma. A comma is also appended after each pair, except for the last one.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pairs} & The array of bonded pairs of indices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The comma-\/separated string of bonded pair indices. 
+\end{DoxyReturn}
+\Hypertarget{rna__secondary_8cpp_a858eec12f2b91a840c7d7d84f059d6ff}\label{rna__secondary_8cpp_a858eec12f2b91a840c7d7d84f059d6ff} 
+\index{rna\_secondary.cpp@{rna\_secondary.cpp}!traceback@{traceback}}
+\index{traceback@{traceback}!rna\_secondary.cpp@{rna\_secondary.cpp}}
+\doxysubsubsection{\texorpdfstring{traceback()}{traceback()}}
+{\footnotesize\ttfamily void traceback (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{string}]{str,  }\item[{vector$<$ vector$<$ int $>$ $>$}]{dp,  }\item[{vector$<$ pair$<$ int, int $>$ $>$ \&}]{ans }\end{DoxyParamCaption})}
+
+
+
+Performs traceback to reconstruct the optimal secondary structure from the dynamic programming table. 
+
+This function performs a traceback on the dynamic programming table {\ttfamily dp} to reconstruct the optimal secondary structure of the RNA sequence. It takes the starting and ending indices {\ttfamily i} and {\ttfamily j}, the RNA sequence {\ttfamily str}, the dynamic programming table {\ttfamily dp}, and a reference to a vector {\ttfamily ans} that will store the bonded pairs of indices.
+
+The function works recursively by checking if the maximum number of base pairs {\ttfamily dp\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}} is the same as {\ttfamily dp\mbox{[}i\mbox{]}\mbox{[}j-\/1\mbox{]}}, in which case it recursively calls itself with {\ttfamily j-\/1} as the new ending index. Otherwise, it finds the index {\ttfamily k} such that the nucleotides at indices {\ttfamily k} and {\ttfamily j} can form a base pair, and the value {\ttfamily dp\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}} is the sum of 1 and the maximum number of base pairs for the substrings from {\ttfamily i} to {\ttfamily k-\/1} and from {\ttfamily k+1} to {\ttfamily j-\/1}. It then adds the pair {\ttfamily (k, j)} to the {\ttfamily ans} vector and recursively calls itself with the updated indices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The starting index of the substring. \\
+\hline
+{\em j} & The ending index of the substring. \\
+\hline
+{\em str} & The RNA sequence as a string. \\
+\hline
+{\em dp} & The dynamic programming table. \\
+\hline
+{\em ans} & A reference to a vector that will store the bonded pairs of indices. \\
+\hline
+\end{DoxyParams}

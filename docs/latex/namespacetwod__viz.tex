@@ -1,0 +1,60 @@
+\doxysection{twod\+\_\+viz Namespace Reference}
+\hypertarget{namespacetwod__viz}{}\label{namespacetwod__viz}\index{twod\_viz@{twod\_viz}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacetwod__viz_a91a3f2edc6f8f90a41982e7dd7b93f14}\label{namespacetwod__viz_a91a3f2edc6f8f90a41982e7dd7b93f14} 
+dict {\bfseries colordict} = \{"{}A"{}\+: "{}lightblue"{}, "{}U"{}\+: "{}red"{}, "{}G"{}\+: "{}lightgreen"{}, "{}C"{}\+: "{}yellow"{}\}
+\item 
+\Hypertarget{namespacetwod__viz_a326acb8a8a6f8eb31b46b0ab3bcd2128}\label{namespacetwod__viz_a326acb8a8a6f8eb31b46b0ab3bcd2128} 
+{\bfseries G} = nx.\+Graph()
+\item 
+\Hypertarget{namespacetwod__viz_a7769c0f23e6446d8a4c3d664c0df6e6a}\label{namespacetwod__viz_a7769c0f23e6446d8a4c3d664c0df6e6a} 
+{\bfseries rna\+\_\+seq} = sys.\+argv\mbox{[}1\mbox{]}
+\item 
+\Hypertarget{namespacetwod__viz_abe6d3ce17a7a50cb5c46c9c9214c05c1}\label{namespacetwod__viz_abe6d3ce17a7a50cb5c46c9c9214c05c1} 
+list {\bfseries node\+\_\+labels} = \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{namespacetwod__viz_a6e117e97bb8102b44117f3a4f37fb7bf}\label{namespacetwod__viz_a6e117e97bb8102b44117f3a4f37fb7bf} 
+list {\bfseries color\+\_\+seq} = \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{namespacetwod__viz_a142bd7ac21458db65e5968f10ab2f865}\label{namespacetwod__viz_a142bd7ac21458db65e5968f10ab2f865} 
+list {\bfseries edges\+\_\+list} = \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{namespacetwod__viz_affc4ec1ae0696b2494b7b7c1dd90ae6b}\label{namespacetwod__viz_affc4ec1ae0696b2494b7b7c1dd90ae6b} 
+{\bfseries csvstr} = sys.\+argv\mbox{[}2\mbox{]}
+\item 
+\Hypertarget{namespacetwod__viz_af8c96fa4dcbb3699a379136bfde0a838}\label{namespacetwod__viz_af8c96fa4dcbb3699a379136bfde0a838} 
+{\bfseries str\+\_\+arr} = csvstr.\+split("{},"{})
+\item 
+\Hypertarget{namespacetwod__viz_a2f772b0ad9fc528f31f6102e1275c60d}\label{namespacetwod__viz_a2f772b0ad9fc528f31f6102e1275c60d} 
+{\bfseries pos} = nx.\+circular\+\_\+layout(G)
+\item 
+\Hypertarget{namespacetwod__viz_adc5465949e6f24ebe2155b026b6a79ef}\label{namespacetwod__viz_adc5465949e6f24ebe2155b026b6a79ef} 
+{\bfseries with\+\_\+labels}
+\item 
+\Hypertarget{namespacetwod__viz_a8392c48b4e6be39cb4f32723817a6cb3}\label{namespacetwod__viz_a8392c48b4e6be39cb4f32723817a6cb3} 
+{\bfseries True}
+\item 
+\Hypertarget{namespacetwod__viz_a97233fab5a8d3d63d2500b3d5da82a8e}\label{namespacetwod__viz_a97233fab5a8d3d63d2500b3d5da82a8e} 
+{\bfseries node\+\_\+color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@file twod_viz.py
+@brief This file contains a Python script that generates a two-dimensional visualization of the secondary structure of an RNA sequence using NetworkX and Matplotlib.
+
+The script takes two command-line arguments:
+1. The RNA sequence as a string.
+2. A comma-separated string representing the bonded pairs of indices in the RNA sequence.
+
+The script creates a graph object using NetworkX, with nodes representing the nucleotides in the RNA sequence and edges representing the bonds between nucleotides in the secondary structure. The nodes are colored according to the nucleotide type (A, U, G, or C). The graph is then visualized using Matplotlib's circular layout.
+
+@author Y.S Sandeep
+@author Suman Sekhar Sahoo
+@author Raghuram Venkatesan
+@author Bhaarat K
+@author Kamalesh Ram
+\end{DoxyVerb}
+ 
