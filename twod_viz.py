@@ -61,7 +61,7 @@ for i in range(len(rna_seq)):
 for i in range(len(rna_seq) - 1):
     edges_list.append((rna_seq[i] + str(i), rna_seq[i + 1] + str(i + 1)))
 G.add_nodes_from(node_labels)
-print(edges_list)
+# print(edges_list)
 
 """
 @var global csvstr
@@ -88,7 +88,7 @@ G.add_edges_from(edges_list)
 @var global pos
 A dictionary mapping nodes to their positions in the visualization, obtained using NetworkX's circular layout.
 """
-pos = nx.circular_layout(G)
+pos = nx.spring_layout(G)
 
 """
 @var global with_labels
@@ -104,6 +104,6 @@ A boolean value set to True, indicating that node labels should be displayed.
 @var global node_color
 A list of colors for the nodes, corresponding to the nucleotide types.
 """
-nx.draw_networkx(G, with_labels=True, node_color=color_seq)
+nx.draw_networkx(G, pos, with_labels=True, node_color=color_seq)
 plt.axis("off")
 plt.show()
