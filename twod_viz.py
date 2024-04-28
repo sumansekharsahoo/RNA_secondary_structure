@@ -48,7 +48,8 @@ node_labels = []
 A list of node colors corresponding to the nucleotide types.
 """
 color_seq = []
-
+edge_color_seq = []
+line_widths = []
 """
 @var global edges_list
 A list of edges representing the bonds between adjacent nucleotides in the sequence.
@@ -60,6 +61,8 @@ for i in range(len(rna_seq)):
     color_seq.append(colordict[rna_seq[i]])
 for i in range(len(rna_seq) - 1):
     edges_list.append((rna_seq[i] + str(i), rna_seq[i + 1] + str(i + 1)))
+    edge_color_seq.append("black")
+    line_widths.append(1.0)
 G.add_nodes_from(node_labels)
 # print(edges_list)
 
@@ -82,13 +85,15 @@ for i in range(int(len(str_arr) / 2)):
             rna_seq[int(str_arr[2 * i + 1])] + str_arr[2 * i + 1],
         )
     )
+    edge_color_seq.append("red")
+    line_widths.append(1.2)
 G.add_edges_from(edges_list)
 
 """
 @var global pos
 A dictionary mapping nodes to their positions in the visualization, obtained using NetworkX's circular layout.
 """
-pos = nx.spring_layout(G)
+pos = nx.kamada_kawai_layout(G)
 
 """
 @var global with_labels
@@ -104,6 +109,11 @@ A boolean value set to True, indicating that node labels should be displayed.
 @var global node_color
 A list of colors for the nodes, corresponding to the nucleotide types.
 """
-nx.draw_networkx(G, pos, with_labels=True, node_color=color_seq)
+# nx.draw_networkx(G, pos, with_labels=True, node_color=color_seq)
+nx.draw_networkx_nodes(G, pos, node_size=300, node_color=color_seq)
+nx.draw_networkx_edges(
+    G, pos, edgelist=edges_list, width=line_widths, edge_color=edge_color_seq
+)
+nx.draw_networkx_labels(G, pos, font_size=10)
 plt.axis("off")
 plt.show()
