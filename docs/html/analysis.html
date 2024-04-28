@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithm analysis</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .example {
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      .example h2 {
+        margin-top: 0;
+      }
+      .example img {
+        max-width: 450px;
+        height: auto;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .example p {
+        margin-bottom: 10px;
+      }
+      .flexb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      li {
+        margin-bottom: 10px;
+        font-size: 18px;
+        line-height: 1.4;
+      }
+      .para {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Algorithm Analysis</h1>
+      <a href="index.html">back</a>
+    </div>
+    <div>
+      <h2>Time Complexity Analysis:</h2>
+      <ol>
+        <li>
+          The <strong>isMatching</strong> function has a time complexity of O(1)
+          since it performs constant-time operations.
+        </li>
+        <li>
+          The <strong>optimalMatching</strong> function has a time complexity of
+          O(n^3), where n is the length of the input RNA sequence. It uses
+          nested loops with a maximum difference of
+          <strong>diff &lt; n</strong> to fill the dynamic programming (DP)
+          table. Inside the innermost loop, it iterates over potential matching
+          pairs, which can take O(n) time in the worst case.
+        </li>
+        <li>
+          The <strong>traceback</strong> function has a time complexity of
+          O(n^2) in the worst case. It recursively explores the DP table to
+          reconstruct the optimal secondary structure. In the worst case, when
+          all base pairs are nested, the recursion depth can reach O(n), and
+          within each recursive call, it iterates over potential matching pairs,
+          which can take O(n) time.
+        </li>
+        <li>
+          The <strong>oneDViz</strong> and
+          <strong>pythonCSIndex</strong> functions have a time complexity of
+          O(n), as they iterate over the RNA sequence and the pairs once.
+        </li>
+      </ol>
+      <p class="para">
+        Overall, the time complexity of the algorithm is dominated by the
+        <strong>optimalMatching</strong> function, which has a time complexity
+        of O(n^3).
+      </p>
+
+      <h2>Issues with the algorithm:</h2>
+      <ul>
+        <li>
+          The algorithm makes use of several hard restrictions such as the sharp
+          turn condition- which states: between 2 bonded nucleotides, there must
+          be atleast 4 nucleotides. This restriction is a good approximation for
+          smaller RNA sequences, but fails for large chains.
+        </li>
+        <li>
+          In this algorithm, we try to maximize the A-U, G-C pairings. But
+          normally the secondary structure predictions also consider the energy
+          minimization.
+        </li>
+        <li>
+          Base pair maximization does not yield biologically relevant
+          structures: i.no stacking of base pairs considered ii.loop size not
+          distingushed iii.no special scoring of multiple loops
+        </li>
+        <li>
+          Through this algorithm, given a sequence, only 1 structure is
+          predicted: i. base pair maximization can not differnciate structures
+          sufficiently well: possibly many optima ii.no sub-optimal solutions
+        </li>
+        <li>Crossing structures cannot be predicted</li>
+      </ul>
+    </div>
+  </body>
+</html>
